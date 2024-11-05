@@ -1,12 +1,12 @@
 {
   "name": "sba-mongodb",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon script.js",
-    "dev": "nodemon script.js"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
 
   },
   "keywords": [],
