@@ -16,7 +16,7 @@ body {
   background-image: url('/backgrounds/sunny.jpeg');
 }
 
-/* buttons*/
+/* Закрепляем кнопки с обоями сверху */
 .background-buttons {
   display: flex;
   gap: 10px;
@@ -27,19 +27,19 @@ body {
   z-index: 1;
 }
 
-/* main container */
+/* Главный контейнер с отступом для кнопок */
 .layout-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  padding-top: 80px; 
+  padding-top: 80px; /* Отступ сверху для кнопок */
   gap: 20px;
   position: relative;
 }
 
-/* widget */
+/* Центрированный виджет с плавной анимацией */
 .widget {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 50%;
@@ -54,10 +54,10 @@ body {
   text-align: center;
   position: relative;
   animation: float 3s ease-in-out infinite;
-  margin-top: 20px; /* space between buttons */
+  margin-top: 20px; /* Отступ между виджетом и кнопками */
 }
 
-/* widget animation */
+/* Анимация для плавного движения виджета */
 @keyframes float {
   0%, 100% { transform: translateY(-5px); }
   50% { transform: translateY(5px); }
@@ -123,12 +123,27 @@ body {
   transition: background-color 0.3s;
 }
 
-/* left container */
-.weather-info {
-  left: calc(50% - 440px);
+.btn:hover {
+  background-color: #0056b3;
 }
 
-/* right container */
+.scroll-container {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* Контейнер с текущей погодой (слева) */
+.weather-info {
+  left: calc(50% - 440px); /* Смещаем на 300px от центра влево */
+}
+
+/* Контейнер с сохранёнными данными (справа) */
 .saved-data {
-  right: calc(50% - 440px); 
+  right: calc(50% - 440px); /* Смещаем на 300px от центра вправо */
 }
