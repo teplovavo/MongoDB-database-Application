@@ -10,16 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const weatherInfoContainer = document.getElementById('weather-info');
   let weatherData = {};
 
-  // Background selection functionality
+  // Background selection functionality with save to database
   document.querySelectorAll('.bg-button').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       document.querySelectorAll('.bg-button').forEach(btn => btn.classList.remove('active-bg'));
       button.classList.add('active-bg');
+
+      // Set background image
       const bgImage = button.dataset.bg;
       document.body.style.backgroundImage = `url('/backgrounds/${bgImage}')`;
+
+      // Save selected background to locations collection
+      try {
+        const response = await fetch('/api/locations/background', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: bgImage })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to save background in locations');
+        }
+        console.log('Background saved successfully');
+      } catch (error) {
+        console.error('Error saving background:', error);
+      }
     });
   });
 
+  // Remaining existing functionality
   // Handle search form submission
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
