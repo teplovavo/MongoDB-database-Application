@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e0f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-image: url('/backgrounds/sunny.jpeg');
+}
+
+/* buttons*/
+.background-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  z-index: 1;
+}
+
+/* main container */
+.layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 80px; 
+  gap: 20px;
+  position: relative;
+}
+
+/* widget */
+.widget {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  padding: 30px;
+  width: 350px;
+  height: 350px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+  margin-top: 20px; /* space between buttons */
+}
+
+/* widget animation */
+@keyframes float {
+  0%, 100% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+}
+
+.weather-info, .saved-data {
+  width: 250px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hidden {
+  display: none;
+}
+
+.bg-button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgba(64, 64, 64, 0.5);
+  color: #fff;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+}
+
+.bg-button:hover {
+  background-color: #0056b3;
+}
+
+.active-bg {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.styled-input {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  color: #333;
+  margin-top: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+/* left container */
+.weather-info {
+  left: calc(50% - 440px);
+}
+
+/* right container */
+.saved-data {
+  right: calc(50% - 440px); 
+}
