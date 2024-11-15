@@ -1,149 +1,176 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
 
 body {
-  background-color: #e0f7fa;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Background settings and buttons */
+.background-settings {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-size: cover;
-  background-image: url('/backgrounds/sunny.jpeg');
+  margin: 20px;
 }
-
-/* Закрепляем кнопки с обоями сверху */
 .background-buttons {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
-  justify-content: center;
-  position: fixed;
-  top: 20px;
-  z-index: 1;
+  margin-bottom: 10px;
 }
 
-/* Главный контейнер с отступом для кнопок */
+.bg-button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(64, 64, 64, 0.5); /* Полупрозрачный серый */
+  color: white;
+  border-radius: 4px;
+}
+
+.bg-button.active-bg {
+  background-color: rgba(64, 64, 64, 1); /* Более тёмный серый при активном состоянии */
+}
+
+.bg-button:hover {
+  background-color: rgba(64, 64, 64, 1);
+}
+
+.background-controls {
+  display: flex;
+  gap: 10px;
+}
+.background-controls button {
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.background-controls button:hover {
+  background-color: #0b7dda;
+}
+
+/* Layout container */
 .layout-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding-top: 80px; /* Отступ сверху для кнопок */
+  align-items: flex-start;
   gap: 20px;
-  position: relative;
+  padding: 20px;
 }
 
-/* Центрированный виджет с плавной анимацией */
+/* Widget styles */
 .widget {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 50%;
-  padding: 30px;
-  width: 350px;
-  height: 350px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+.widget h2, .widget h3 {
+  margin-bottom: 15px;
+}
+
+.widget form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  animation: float 3s ease-in-out infinite;
-  margin-top: 20px; /* Отступ между виджетом и кнопками */
 }
 
-/* Анимация для плавного движения виджета */
-@keyframes float {
-  0%, 100% { transform: translateY(-5px); }
-  50% { transform: translateY(5px); }
+.widget input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.weather-info, .saved-data {
-  width: 250px;
-  text-align: left;
+.widget button {
+  padding: 10px;
+  border: none;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.widget button:hover {
+  background-color: #0b7dda;
+}
+
+/* Data display areas */
+.data-display {
   background: rgba(255, 255, 255, 0.85);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
+.data-content {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.data-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.data-item:last-child {
+  border-bottom: none;
+}
+
+/* Floating animation for widgets */
+@keyframes float {
+  0%, 100% { transform: translateY(-3px); }
+  50% { transform: translateY(3px); }
+}
+
+/* Hidden class */
 .hidden {
   display: none;
 }
 
-.bg-button {
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  background: rgba(64, 64, 64, 0.5);
-  color: #fff;
-  transition: background-color 0.3s;
-  border: 1px solid #ddd;
+/* Modal for background data */
+.modal {
+  position: fixed;
+  z-index: 999; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); 
 }
 
-.bg-button:hover {
-  background-color: #0056b3;
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-.active-bg {
-  background-color: #333;
-  color: white;
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
   font-weight: bold;
-}
-
-.styled-input {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  outline: none;
-  font-size: 16px;
-  background-color: #f0f0f0;
-  color: #333;
-  margin-top: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
   cursor: pointer;
-  border-radius: 25px;
-  margin-top: 10px;
-  transition: background-color 0.3s;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.scroll-container {
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.85);
-}
-
-
-/* Контейнер с текущей погодой (слева) */
-.weather-info {
-  left: calc(50% - 440px); /* Смещаем на 300px от центра влево */
-}
-
-/* Контейнер с сохранёнными данными (справа) */
-.saved-data {
-  right: calc(50% - 440px); /* Смещаем на 300px от центра вправо */
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
