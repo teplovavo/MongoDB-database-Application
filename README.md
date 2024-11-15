@@ -1,4 +1,5 @@
 Weather and Background Fun App 
+
 Hey there! Welcome to my super cool Weather and Background Fun App! This little project is all about mixing up the weather vibes with awesome backgrounds and user info. Let's dive in!
 
 What's This All About? 
